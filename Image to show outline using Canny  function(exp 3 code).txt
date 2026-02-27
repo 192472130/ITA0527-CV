@@ -1,0 +1,17 @@
+import cv2
+
+path = r"C:\Users\obulr\OneDrive\Documents\OPENCV\IMG-20250219-WA0034[1].jpg"
+
+image = cv2.imread(path)
+
+if image is None:
+    print("Image not found")
+else:
+    resized = cv2.resize(image, (400, 350))
+    gray = cv2.cvtColor(resized, cv2.COLOR_BGR2GRAY)
+    edges = cv2.Canny(gray, 100, 200)
+    cv2.imshow("Original", image)
+    cv2.imshow("Grayscale", gray)
+    cv2.imshow("Canny Outline", edges)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()

@@ -1,0 +1,18 @@
+import cv2
+
+path = r"C:\Users\obulr\OneDrive\Documents\OPENCV\IMG-20250219-WA0034[1].jpg"
+
+image = cv2.imread(path)
+
+if image is None:
+    print("Image not found")
+else:
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    equalized = cv2.equalizeHist(gray)
+
+    cv2.imshow("Original Image", image)
+    cv2.imshow("Grayscale Image", gray)
+    cv2.imshow("Histogram Equalized Image", equalized)
+
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
