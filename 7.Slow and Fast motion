@@ -1,0 +1,34 @@
+import cv2
+
+# Load saved video
+cap = cv2.VideoCapture(r"C:\Users\jithe\OneDrive\Documents\opencv\video.mp4")
+
+if not cap.isOpened():
+    print("Error: Cannot open video file")
+    exit()
+
+while True:
+    ret, frame = cap.read()
+
+    if not ret:
+        break
+
+    # Get original dimensions
+    height, width = frame.shape[:2]
+
+    # Set scale percentage (50% of original size)
+    scale_percent = 50  
+
+    new_width = int(width * scale_percent / 100)
+    new_height = int(height * scale_percent / 100)
+
+    # Resize while maintaining aspect ratio
+    resized_frame = cv2.resize(frame, (new_width, new_height))
+
+    cv2.imshow("Resized Video", resized_frame)
+
+    if cv2.waitKey(30) & 0xFF == ord('q'):
+        break
+
+cap.release()
+cv2.destroyAllWindows()

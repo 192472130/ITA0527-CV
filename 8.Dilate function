@@ -1,0 +1,26 @@
+import cv2
+import numpy as np
+
+# Step 1: Read the image
+image = cv2.imread(r"C:\Users\jithe\OneDrive\Documents\opencv\images.jpg")
+
+if image is None:
+    print("Image not found")
+    exit()
+
+# Step 2: Convert to grayscale
+gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+# Step 3: Create kernel (3x3 matrix)
+kernel = np.ones((3, 3), np.uint8)
+
+# Step 4: Apply dilation
+dilated = cv2.dilate(gray, kernel, iterations=1)
+
+# Step 5: Display images
+cv2.imshow("Original Image", image)
+cv2.imshow("Grayscale Image", gray)
+cv2.imshow("Dilated Image", dilated)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
