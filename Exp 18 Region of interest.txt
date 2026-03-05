@@ -1,0 +1,16 @@
+import cv2
+img = cv2.imread("C:/Users/sybil/Pictures/Screenshots/Screenshot 2026-03-03 113356.png")
+
+cv2.imshow("1. Original Image", img)
+roi = img[50:200, 50:200]   
+
+cv2.imshow("2. Cropped ROI", roi)
+roi_copy = roi.copy()
+cv2.imshow("3. Copied ROI", roi_copy)
+
+img[250:400, 250:400] = roi_copy
+
+cv2.imshow("4. Final Image with Pasted ROI", img)
+
+cv2.waitKey(0)
+cv2.destroyAllWindows()
